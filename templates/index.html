@@ -1,0 +1,42 @@
+{% include 'header.html' %}
+<h2 class="bg-light text-center py-4 "><strong>Joshi Bookstore</strong></h2>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for product in products %}
+                    <div class="col">
+                        <div class="card shadow-sm text-dark">
+                            <img src="{{ product['image_url'] }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product['product_name'] }}</h5>
+                                <p class="card-text">{{ product['price'] }}</p>
+{#                                {% if not current_user.is_authenticated %}#}
+                                <a href="{{url_for('add_to_cart', product_id = product.id)}}" class="btn btn-primary" >Add to Cart</a>
+{#                                {% endif %}#}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{#<script>#}
+{#    function addEntry(product) {#}
+{#    // Parse any JSON previously stored in allEntries#}
+{#        let existingCartEntries = JSON.parse(localStorage.getItem("allCartEntries"));#}
+{#        if(existingCartEntries == null) existingCartEntries = [];#}
+{#        const cart_item = {#}
+{#            "title": product.product_name,#}
+{#            "id": product.id#}
+{#        };#}
+{#        localStorage.setItem("cart_item", JSON.stringify(cart_item));#}
+{#    // Save allEntries back to local storage#}
+{#        existingCartEntries.push(cart_item);#}
+{#        localStorage.setItem("allCartEntries", JSON.stringify(existingCartEntries));#}
+{#};#}
+
+{#</script>#}
+{% include 'footer.html' %}

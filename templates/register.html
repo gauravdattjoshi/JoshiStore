@@ -1,0 +1,65 @@
+{% include 'header.html' %}
+<h3 class="text-center">Register</h3>
+<div class="card">
+
+
+    <div class="card-body">
+
+
+        <main class="form-signin container">
+            <form action="/register" method="post">
+                {{ form.csrf_token }}
+
+            {#            #USERNAME            #}
+
+                <div class="form-floating mb-4">
+                        <p>{{ form.username.label }}</p>
+                        {{ form.username(class_='container') }}
+                    {% if form.username.errors %}
+                        <ul class="errors">
+                        {% for error in form.username.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                {#            #EMAIL            #}
+                <div class="form-floating mb-4">
+                        <p>{{ form.email.label }}</p>
+                        {{ form.email(class_='container') }}
+                      {% if form.email.errors %}
+                        <ul class="errors">
+                        {% for error in form.email.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+               {#            #Password            #}
+
+                <div class="form-floating mb-4">
+                        <p>{{ form.password.label }}</p>
+                        {{ form.password(class_='container') }}
+                      {% if form.password.errors %}
+                        <ul class="errors">
+                        {% for error in form.password.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+
+    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Register">
+
+    </form>
+    </main>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+
+
